@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Contact</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 { font-size: 1.2rem; }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: #c9fff0; }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .contact-card,
+    .form-card,
+    .note-box,
+    .map-box,
+    .cta-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section { padding: 4.5rem 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 { grid-template-columns: 1.05fr 0.95fr; }
+
+    .grid-3 { grid-template-columns: repeat(3,1fr); }
+
+    .soft-section { background: #f3fafb; }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-tag {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fbfdfe;
+      font: inherit;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .map-placeholder {
+      border-radius: 16px;
+      border: 1px dashed #9fc6cf;
+      background: linear-gradient(135deg, #eaf7f9, #f8fcfd);
+      min-height: 230px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p { color: white; }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Get in touch with JPHA</span>
+
+      <h2>Contact us for healthcare information, services, and support.</h2>
+
+      <p>
+        The Contact page makes it easy for patients, families,
+        health workers, partners, and the public to reach
+        Jiwaka Provincial Health Authority.
+      </p>
+
+      <p>
+        Use this page for general enquiries, service information,
+        facility guidance, public health matters, and official communication.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h3>Quick Contact Overview</h3>
+
+      <ul>
+        <li><strong>Main phone:</strong> +675 7930 1096</li>
+        <li><strong>Email:</strong> info@jiwakapha.gov.pg</li>
+        <li><strong>Location:</strong> Banz / Kurumul, Jiwaka Province</li>
+        <li><strong>Main referral hospital:</strong> Kudjip Nazarene Hospital</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Contact Page Purpose</h4>
+
+      <p>
+        A good Contact page helps visitors quickly find the right way
+        to communicate with the authority.
+      </p>
+
+      <p>
+        For JPHA, this page supports patients, families, staff,
+        stakeholders, churches, NGOs, and government partners
+        who need official health information or assistance.
+      </p>
+    </div>
+
+    <div>
+      <ul class="list">
+        <li><strong>Patients and families:</strong> Ask about services and facilities.</li>
+        <li><strong>Partners and institutions:</strong> Use it for official communication.</li>
+        <li><strong>Community members:</strong> Enquire about public health information.</li>
+        <li><strong>Staff and stakeholders:</strong> Use it as a central contact point.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Contact Information</h3>
+      <p>Key contact details for Jiwaka Provincial Health Authority.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="contact-card">
+        <span class="contact-tag">Phone</span>
+        <h4>Call Us</h4>
+        <p><strong>Main phone:</strong> +675 7930 1096</p>
+        <p>Use this number for general enquiries and service information.</p>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-tag">Email</span>
+        <h4>Email Us</h4>
+        <p><strong>Email:</strong> info@jiwakapha.gov.pg</p>
+        <p>This email should be verified with JPHA before official launch.</p>
+      </div>
+
+      <div class="contact-card">
+        <span class="contact-tag">Location</span>
+        <h4>Visit Us</h4>
+        <p><strong>Province:</strong> Jiwaka Province, Papua New Guinea</p>
+        <p><strong>Area:</strong> Banz / Kurumul administrative area</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div class="form-card">
+      <h4>Send Us a Message</h4>
+
+      <p>
+        This demo contact form is ready for layout and styling.
+        It will need backend connection before it can send real messages.
+      </p>
+
+      <form>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input id="name" type="text" placeholder="Enter your full name" />
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" placeholder="Enter your email address" />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="text" placeholder="Enter your phone number" />
+        </div>
+
+        <div class="field">
+          <label for="topic">Enquiry Type</label>
+          <select id="topic">
+            <option>General Enquiry</option>
+            <option>Health Services Information</option>
+            <option>Facility Information</option>
+            <option>Partnership / Official Communication</option>
+            <option>Feedback / Complaint</option>
+            <option>Career / Recruitment Enquiry</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Type your message here"></textarea>
+        </div>
+
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="map-box">
+      <h4>Office Location</h4>
+
+      <p>
+        JPHA operations are linked with Jiwaka Province,
+        including Banz, Kurumul, and Kudjip health service areas.
+      </p>
+
+      <ul class="list">
+        <li><strong>Province:</strong> Jiwaka Province</li>
+        <li><strong>Country:</strong> Papua New Guinea</li>
+        <li><strong>Office area:</strong> Banz / Kurumul</li>
+        <li><strong>Main referral hospital:</strong> Kudjip Nazarene Hospital</li>
+      </ul>
+
+      <div class="map-placeholder">
+        <div>
+          <strong>Map Placeholder</strong>
+          <p>Add Google Maps here when JPHA’s exact office address is confirmed.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>What Visitors May Need Help With</h4>
+
+      <p>
+        This Contact page can guide people based on the type of help they need.
+      </p>
+
+      <ul class="list">
+        <li><strong>Service enquiries:</strong> Questions about available health services.</li>
+        <li><strong>Facility enquiries:</strong> Information about hospitals, clinics, and aid posts.</li>
+        <li><strong>Public health information:</strong> Outreach, immunization, and awareness programs.</li>
+        <li><strong>Official matters:</strong> Communication from partners and government stakeholders.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>Important Publishing Note</h4>
+
+      <p>
+        Before the site goes live, verify all contact details directly with JPHA,
+        including official email, office address, office hours,
+        emergency numbers, and department-specific contacts.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Related Pages</h4>
+
+      <ul class="list">
+        <li><strong>Services page:</strong> Learn about JPHA’s main health service areas.</li>
+        <li><strong>Facilities page:</strong> Find hospitals, clinics, and service points.</li>
+        <li><strong>About page:</strong> Learn about JPHA’s role and priorities.</li>
+      </ul>
+    </div>
+
+    <div class="cta-box">
+      <h4>Need Service Information?</h4>
+
+      <p>
+        Visitors looking for care, support, or facility information
+        can continue to the Services page.
+      </p>
+
+      <ul class="list">
+        <li>View health service categories</li>
+        <li>Find facility information</li>
+        <li>Learn more about JPHA’s role and mission</li>
+      </ul>
+
+      <a href="services.html" class="btn">Go to Services Page</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official contact details should be verified before public release.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

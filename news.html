@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | News</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+    }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #c9fff0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .news-card,
+    .feature-card,
+    .note-box,
+    .cta-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .news-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .grid-3,
+    .news-grid {
+      grid-template-columns: repeat(3,1fr);
+    }
+
+    .soft-section {
+      background: #f3fafb;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .news-tag,
+    .meta {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .meta {
+      margin-right: 0.3rem;
+      background: #f1f7f8;
+    }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p {
+      color: white;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3,
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Latest updates and public information</span>
+
+      <h2>News, announcements, and health updates.</h2>
+
+      <p>
+        The JPHA News page shares important updates about healthcare services,
+        public health programs, infrastructure development, partnerships,
+        and community health activities across Jiwaka Province.
+      </p>
+
+      <p>
+        This page can be used for official announcements, health notices,
+        service alerts, media releases, and community awareness messages.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h3>News Page Focus</h3>
+
+      <ul>
+        <li><strong>Health updates:</strong> Public health notices and announcements</li>
+        <li><strong>Service news:</strong> Hospital, rural health, and outreach updates</li>
+        <li><strong>Partnerships:</strong> Government, church, and health partner support</li>
+        <li><strong>Development:</strong> Health infrastructure and workforce progress</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div class="feature-card">
+      <span class="news-tag">Featured Update</span>
+
+      <h4>Strengthening healthcare communication in Jiwaka Province</h4>
+
+      <p>
+        JPHA continues to play an important role in improving public health
+        communication, healthcare coordination, and service delivery updates
+        for communities across Jiwaka Province.
+      </p>
+
+      <p>
+        On a live website, this section can highlight the latest official
+        announcement, health campaign, service improvement, or public notice.
+      </p>
+    </div>
+
+    <div>
+      <h4>Purpose of the News Page</h4>
+
+      <p>
+        A News page helps the public stay informed about healthcare services,
+        new developments, leadership updates, health campaigns, and emergency notices.
+      </p>
+
+      <p>
+        For JPHA, it also creates one central place where people can follow
+        health updates that affect families, patients, health workers,
+        and communities throughout the province.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>News Categories</h3>
+      <p>Main types of updates that can be published by JPHA.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h4>Health Announcements</h4>
+        <p>
+          Public health notices, awareness campaigns,
+          disease prevention messages, and emergency updates.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Services & Facilities</h4>
+        <p>
+          Updates on hospitals, rural health centres,
+          aid posts, medical supplies, and service improvements.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Partnerships & Programs</h4>
+        <p>
+          News about partnerships with government,
+          churches, NGOs, WHO, and other health organizations.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Recent News-Style Updates</h3>
+      <p>Example updates prepared for the JPHA website.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <div class="news-card">
+        <span class="meta">Infrastructure</span>
+        <span class="meta">Development</span>
+
+        <h4>JPHA continues health infrastructure improvement</h4>
+
+        <p>
+          JPHA continues to support improvements in healthcare infrastructure,
+          including planning for stronger hospital and rural health service capacity.
+        </p>
+      </div>
+
+      <div class="news-card">
+        <span class="meta">Medical Supplies</span>
+        <span class="meta">Logistics</span>
+
+        <h4>Medical storage and supply systems strengthened</h4>
+
+        <p>
+          Improvements in medical storage and supply coordination aim to support
+          better medicine distribution across Jiwaka Province.
+        </p>
+      </div>
+
+      <div class="news-card">
+        <span class="meta">Public Health</span>
+        <span class="meta">Immunization</span>
+
+        <h4>Public health programs support communities</h4>
+
+        <p>
+          Public health activities such as immunization,
+          health awareness, and disease prevention remain key priorities for JPHA.
+        </p>
+      </div>
+
+      <div class="news-card">
+        <span class="meta">Leadership</span>
+        <span class="meta">Governance</span>
+
+        <h4>Leadership supports health system reform</h4>
+
+        <p>
+          JPHA leadership continues to support health system strengthening,
+          planning, accountability, and improved service delivery.
+        </p>
+      </div>
+
+      <div class="news-card">
+        <span class="meta">Rural Health</span>
+        <span class="meta">Outreach</span>
+
+        <h4>Rural outreach remains a major priority</h4>
+
+        <p>
+          Outreach services help support remote communities,
+          rural health centres, and aid posts across the province.
+        </p>
+      </div>
+
+      <div class="news-card">
+        <span class="meta">Partnerships</span>
+        <span class="meta">Support</span>
+
+        <h4>Health partnerships strengthen service delivery</h4>
+
+        <p>
+          JPHA works with government agencies, churches,
+          development partners, and communities to improve health outcomes.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>How This Page Can Grow</h4>
+
+      <p>
+        Over time, the News page can become a full public information hub
+        for JPHA announcements, media releases, service alerts,
+        and health awareness campaigns.
+      </p>
+
+      <ul class="list">
+        <li><strong>Official announcements:</strong> Leadership, governance, and service updates.</li>
+        <li><strong>Service alerts:</strong> Temporary closures, referral updates, and emergency notices.</li>
+        <li><strong>Health campaigns:</strong> Immunization drives and awareness programs.</li>
+        <li><strong>Partnership stories:</strong> Health projects, training, and community support.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>Important Publishing Note</h4>
+
+      <p>
+        Before publishing official news, all dates, names, statements,
+        photos, and article details should be confirmed directly with JPHA.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Why This Page Matters</h4>
+
+      <p>
+        A News page helps JPHA communicate clearly with the public,
+        share progress, and build trust with communities.
+      </p>
+
+      <p>
+        It also helps families, patients, health workers,
+        and partners find important healthcare information in one place.
+      </p>
+    </div>
+
+    <div class="cta-box">
+      <h4>Keep Exploring JPHA</h4>
+
+      <p>
+        Learn more about JPHA’s services, leadership,
+        facilities, and healthcare priorities.
+      </p>
+
+      <ul class="list">
+        <li>Read about JPHA on the About page</li>
+        <li>Explore healthcare services</li>
+        <li>Find health facilities</li>
+        <li>Contact JPHA for enquiries</li>
+      </ul>
+
+      <a href="about.html" class="btn">Go to About Page</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official news details should be verified before public release.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+  </div>
+</footer>
+
+</body>
+</html>

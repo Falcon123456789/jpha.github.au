@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Leadership</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+    }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #c9fff0;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .leader-card,
+    .note-box,
+    .cta-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .leader-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3,1fr);
+    }
+
+    .leader-grid {
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 2rem;
+    }
+
+    .soft-section {
+      background: #f3fafb;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .leader-tag {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .leader-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .leader-role {
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d8eef2, #eef8fa);
+      display: grid;
+      place-items: center;
+      border: 2px solid #c8e3ea;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p {
+      color: white;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3,
+      .leader-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+
+      <div class="brand-badge">JPHA</div>
+
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+
+    </a>
+
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  </div>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <span class="eyebrow">Leadership & Governance</span>
+
+      <h2>Guiding healthcare services across Jiwaka Province.</h2>
+
+      <p>
+        The Leadership page introduces the people and governance structures
+        responsible for guiding healthcare services throughout Jiwaka Province.
+      </p>
+
+      <p>
+        JPHA leadership supports healthcare planning,
+        operations, public health priorities,
+        accountability, and institutional development.
+      </p>
+
+    </div>
+
+    <aside class="hero-card">
+
+      <h3>Leadership Overview</h3>
+
+      <ul>
+        <li><strong>Board oversight:</strong> Strategic guidance and accountability</li>
+        <li><strong>Executive management:</strong> Operational healthcare leadership</li>
+        <li><strong>Governance:</strong> Planning, reform, and institutional strengthening</li>
+        <li><strong>Public service:</strong> Supporting healthcare delivery province-wide</li>
+      </ul>
+
+    </aside>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="container grid-2">
+
+    <div>
+
+      <h3>Purpose of Leadership</h3>
+
+      <p>
+        Leadership plays a vital role in strengthening healthcare delivery,
+        improving healthcare systems, and supporting healthcare workers
+        throughout Jiwaka Province.
+      </p>
+
+      <p>
+        Governance and executive management help ensure healthcare services remain accountable,
+        responsive, and focused on community needs.
+      </p>
+
+    </div>
+
+    <div>
+
+      <ul class="list">
+        <li><strong>For communities:</strong> Builds trust and transparency.</li>
+        <li><strong>For staff:</strong> Provides direction and operational support.</li>
+        <li><strong>For partners:</strong> Supports collaboration and healthcare coordination.</li>
+        <li><strong>For governance:</strong> Strengthens accountability and leadership systems.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="soft-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Leadership Structure</h3>
+
+      <p>
+        JPHA leadership combines governance oversight and operational healthcare management.
+      </p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h4>Board Oversight</h4>
+
+        <p>
+          The board provides strategic direction,
+          governance oversight, and institutional accountability.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h4>Executive Leadership</h4>
+
+        <p>
+          Executive management supports operations,
+          healthcare coordination, planning, and implementation.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h4>Healthcare Governance</h4>
+
+        <p>
+          Leadership aligns healthcare services,
+          staffing, planning, and public health priorities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h3>Publicly Reported Leadership</h3>
+
+      <p>
+        Leadership information should be officially confirmed before public publication.
+      </p>
+
+    </div>
+
+    <div class="leader-grid">
+
+      <div class="leader-card">
+
+        <div class="avatar">TT</div>
+
+        <span class="leader-tag">Executive Leadership</span>
+
+        <div class="leader-name">Dr. Thaddeus Turi Kinah</div>
+
+        <div class="leader-role">Chief Executive Officer</div>
+
+        <p>
+          Public reports identify Dr. Thaddeus Turi Kinah
+          as a key executive leader supporting healthcare reform,
+          infrastructure development, and healthcare coordination in Jiwaka Province.
+        </p>
+
+      </div>
+
+      <div class="leader-card">
+
+        <div class="avatar">JP</div>
+
+        <span class="leader-tag">Board & Governance</span>
+
+        <div class="leader-name">JPHA Board</div>
+
+        <div class="leader-role">Governance & Strategic Oversight</div>
+
+        <p>
+          The JPHA Board supports governance,
+          institutional accountability, strategic planning,
+          and healthcare policy direction for the province.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="soft-section">
+
+  <div class="container grid-2">
+
+    <div>
+
+      <h3>Governance & Accountability</h3>
+
+      <p>
+        Governance is central to healthcare planning,
+        institutional accountability, and public service delivery.
+      </p>
+
+      <p>
+        Leadership helps ensure healthcare services remain responsive,
+        coordinated, and aligned with community healthcare priorities.
+      </p>
+
+      <ul class="list">
+        <li><strong>Strategic leadership:</strong> Setting healthcare direction and priorities.</li>
+        <li><strong>Operational accountability:</strong> Supporting service delivery and planning.</li>
+        <li><strong>Public responsibility:</strong> Managing healthcare systems transparently.</li>
+        <li><strong>Institutional development:</strong> Strengthening healthcare coordination and reform.</li>
+      </ul>
+
+    </div>
+
+    <div class="note-box">
+
+      <h4>Important Note</h4>
+
+      <p>
+        Leadership names, board members,
+        appointment dates, and official biographies
+        should be confirmed directly with JPHA before launching an official website.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="container grid-2">
+
+    <div class="card">
+
+      <h4>Future Leadership Profiles</h4>
+
+      <ul class="list">
+        <li>Official portrait photos</li>
+        <li>Full names and titles</li>
+        <li>Professional biographies</li>
+        <li>Leadership responsibilities</li>
+        <li>Appointment dates</li>
+        <li>Professional qualifications</li>
+        <li>Official statements and messages</li>
+      </ul>
+
+    </div>
+
+    <div>
+
+      <h3>Why Leadership Matters</h3>
+
+      <p>
+        Strong leadership supports better healthcare planning,
+        service delivery, accountability, and public trust.
+      </p>
+
+      <p>
+        Leadership pages also help communities and healthcare partners
+        better understand the people guiding healthcare systems in the province.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="soft-section">
+
+  <div class="container grid-2">
+
+    <div>
+
+      <h3>Related Pages</h3>
+
+      <ul class="list">
+        <li><strong>About Page:</strong> Learn about JPHA’s mission and purpose.</li>
+        <li><strong>Services Page:</strong> Explore healthcare services and programs.</li>
+        <li><strong>News Page:</strong> Read healthcare announcements and updates.</li>
+        <li><strong>Contact Page:</strong> Reach JPHA offices and administration.</li>
+      </ul>
+
+    </div>
+
+    <div class="cta-box">
+
+      <h4>Learn More About JPHA</h4>
+
+      <p>
+        Explore more information about healthcare services,
+        governance, and public health priorities in Jiwaka Province.
+      </p>
+
+      <a href="about.html" class="btn">Go to About Page</a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+  <div class="container footer-grid">
+
+    <div>
+
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province
+        through public health, hospital services,
+        rural outreach, and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official leadership details should be verified before public release.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h4>Quick Links</h4>
+
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>

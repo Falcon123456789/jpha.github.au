@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Home</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img,
+    iframe {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+    }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #c9fff0;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7,32,39,0.65), rgba(7,32,39,0.7)),
+        url('https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: white;
+      padding: 6rem 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      margin-bottom: 1.5rem;
+      color: #e6f4f7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 1.3rem;
+      border-radius: 999px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-card,
+    .card,
+    .stat-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .stats-grid,
+    .card-grid,
+    .link-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    .card-grid {
+      grid-template-columns: repeat(3,1fr);
+    }
+
+    .link-grid {
+      grid-template-columns: repeat(4,1fr);
+    }
+
+    .stat-card h4 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .card h4,
+    .stat-card p {
+      margin-top: 0.5rem;
+    }
+
+    .about-preview,
+    .quick-links,
+    .contact-section {
+      background: #f2fafb;
+    }
+
+    .two-col,
+    .contact-grid,
+    .map-grid,
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    ul.check-list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    ul.check-list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 960px) {
+      .hero-grid,
+      .two-col,
+      .contact-grid,
+      .map-grid,
+      .footer-grid,
+      .stats-grid,
+      .card-grid,
+      .link-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+
+    <nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Provincial health leadership for Jiwaka Province</span>
+
+      <h2>Delivering quality healthcare services for every community across Jiwaka Province.</h2>
+
+      <p>
+        The Jiwaka Provincial Health Authority coordinates public health,
+        hospital services, rural healthcare, and community outreach programs
+        throughout Jiwaka Province.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Explore Services</a>
+        <a href="#" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h3>At a glance</h3>
+
+      <ul>
+        <li><strong>Established:</strong> Officially launched in 2019</li>
+        <li><strong>Main referral hospital:</strong> Kudjip Nazarene Hospital</li>
+        <li><strong>Coverage:</strong> North Waghi, Jimi & Anglimp South Waghi districts</li>
+        <li><strong>Focus:</strong> Rural healthcare, hospital services & public health outreach</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Healthcare in Numbers</h3>
+      <p>Key figures highlighting healthcare services across Jiwaka Province.</p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h4>3</h4>
+        <p>Districts served province-wide</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>100+</h4>
+        <p>Health facilities and aid posts supported</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>2019</h4>
+        <p>Year JPHA officially launched</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>24/7</h4>
+        <p>Emergency healthcare support services</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="about-preview">
+  <div class="container two-col">
+
+    <div>
+      <h3>About JPHA</h3>
+
+      <p>
+        Jiwaka Provincial Health Authority is responsible for coordinating
+        and delivering healthcare services throughout Jiwaka Province.
+      </p>
+
+      <p>
+        JPHA works with government, churches, healthcare partners,
+        and communities to improve healthcare access and strengthen
+        provincial healthcare systems.
+      </p>
+
+      <a href="#" class="btn btn-primary">Learn More</a>
+    </div>
+
+    <div>
+      <ul class="check-list">
+        <li><strong>Hospital services:</strong> Partnership with Kudjip Nazarene Hospital.</li>
+        <li><strong>Public health:</strong> Immunization and disease prevention programs.</li>
+        <li><strong>Rural healthcare:</strong> Supporting remote aid posts and clinics.</li>
+        <li><strong>Health partnerships:</strong> Working with local and international organizations.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Our Core Services</h3>
+      <p>Delivering essential healthcare services throughout Jiwaka Province.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h4>Primary Healthcare</h4>
+        <p>
+          Supporting maternal healthcare, child health,
+          rural clinics, aid posts, and community outreach services.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Hospital Services</h4>
+        <p>
+          Supporting inpatient care, emergency services,
+          diagnostics, referral systems, and specialist healthcare.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Public Health Programs</h4>
+        <p>
+          Managing immunization, disease surveillance,
+          awareness campaigns, and health emergency response.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="quick-links">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Explore JPHA</h3>
+      <p>Find healthcare services, facilities, updates, and important information.</p>
+    </div>
+
+    <div class="link-grid">
+
+      <div class="card">
+        <h4>About Us</h4>
+        <p>Learn about our leadership, history, and healthcare vision.</p>
+      </div>
+
+      <div class="card">
+        <h4>Services</h4>
+        <p>Browse healthcare services and public health programs.</p>
+      </div>
+
+      <div class="card">
+        <h4>Facilities</h4>
+        <p>Find hospitals, clinics, and health centres.</p>
+      </div>
+
+      <div class="card">
+        <h4>Contact</h4>
+        <p>Reach our offices and healthcare support teams.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Current Priorities & Developments</h3>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h4>Provincial Hospital Development</h4>
+        <p>
+          JPHA continues advocating for stronger provincial hospital infrastructure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Rural Outreach Services</h4>
+        <p>
+          Supporting healthcare access for remote communities across Jiwaka Province.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Medical Supply Improvements</h4>
+        <p>
+          Improving medicine distribution and healthcare supply systems.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container map-grid">
+
+    <div class="card">
+      <h4>Find Us in Jiwaka Province</h4>
+
+      <p>
+        JPHA coordinates healthcare services throughout Jiwaka Province,
+        with key operations connected to Kudjip and Banz.
+      </p>
+
+
+      <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+    </div>
+
+    <div class="card">
+      <iframe
+        class="map-frame"
+        src="https://maps.google.com/maps?q=Kudjip%20Nazarene%20Hospital%20Papua%20New%20Guinea&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container contact-grid">
+
+    <div class="card">
+      <h4>Contact Information</h4>
+
+      <ul class="check-list">
+        <li><strong>Email:</strong> info@jiwakapha.gov.pg</li>
+        <li><strong>Phone:</strong> +675 7930 1096</li>
+        <li><strong>Province:</strong> Jiwaka Province</li>
+        <li><strong>Main Hospital:</strong> Kudjip Nazarene Hospital</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>Why This Website Matters</h4>
+
+      <ul class="check-list">
+        <li>Easy access to healthcare information</li>
+        <li>Supports patients, families, and communities</li>
+        <li>Provides healthcare updates and announcements</li>
+        <li>Strengthens public trust and communication</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and community healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official leadership names and contact details should be confirmed before launch.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

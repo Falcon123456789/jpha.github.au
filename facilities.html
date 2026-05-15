@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Facilities</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 { font-size: 1.2rem; }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: #c9fff0; }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .facility-card,
+    .stat-card,
+    .note-box,
+    .directory-box,
+    .cta-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section { padding: 4.5rem 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .stats-grid,
+    .facility-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 { grid-template-columns: 1.05fr 0.95fr; }
+
+    .grid-3 { grid-template-columns: repeat(3,1fr); }
+
+    .stats-grid { grid-template-columns: repeat(4,1fr); }
+
+    .facility-grid {
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 2rem;
+    }
+
+    .soft-section { background: #f3fafb; }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .facility-tag {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    .directory-box {
+      background: linear-gradient(135deg, #f8fcfd, #edf8fa);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p { color: white; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3,
+      .facility-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="leadership.html">Leadership</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Facilities across Jiwaka Province</span>
+
+      <h2>Hospitals, health centres, aid posts, and community service points.</h2>
+
+      <p>
+        The JPHA Facilities page helps visitors understand the health service
+        network across Jiwaka Province, including referral hospitals,
+        health centres, rural clinics, aid posts, and outreach locations.
+      </p>
+
+      <p>
+        This page can later grow into a full facility directory with confirmed
+        names, locations, services, and contact details.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h3>Facilities Overview</h3>
+
+      <ul>
+        <li><strong>Main referral hospital:</strong> Kudjip Nazarene Hospital</li>
+        <li><strong>Service areas:</strong> North Waghi, Jimi & Anglimp South Waghi</li>
+        <li><strong>Facility types:</strong> Hospitals, health centres, clinics, and aid posts</li>
+        <li><strong>Service reach:</strong> Urban, rural, and remote communities</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Purpose of the Facilities Page</h4>
+
+      <p>
+        A strong Facilities page helps patients, families, health workers,
+        and partners understand where healthcare services are delivered
+        across Jiwaka Province.
+      </p>
+
+      <p>
+        It explains the facility network, highlights referral services,
+        and helps the public know where to start when looking for care.
+      </p>
+    </div>
+
+    <div>
+      <ul class="list">
+        <li><strong>Find care locations:</strong> Understand the main types of health facilities.</li>
+        <li><strong>Support referrals:</strong> Link community care with referral hospital services.</li>
+        <li><strong>Explain access:</strong> Show how rural and remote communities receive services.</li>
+        <li><strong>Enable expansion:</strong> Can become a searchable facility directory later.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Facility Network at a Glance</h3>
+      <p>Key facility information for the JPHA website.</p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h4>Districts</h4>
+        <strong>3</strong>
+        <p>North Waghi, Jimi, and Anglimp South Waghi.</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Main Referral</h4>
+        <strong>Kudjip</strong>
+        <p>Kudjip Nazarene Hospital supports major referral services.</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Facility Types</h4>
+        <strong>4+</strong>
+        <p>Hospital, health centres, clinics, aid posts, and outreach points.</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Province-wide Reach</h4>
+        <strong>1 Network</strong>
+        <p>Connecting communities to healthcare services across Jiwaka.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Main Facility Categories</h3>
+      <p>Facility types that can be listed under JPHA.</p>
+    </div>
+
+    <div class="facility-grid">
+
+      <div class="facility-card">
+        <span class="facility-tag">Referral Hospital</span>
+        <h4>Kudjip Nazarene Hospital</h4>
+        <p>
+          Kudjip Nazarene Hospital is widely known as Jiwaka’s main referral
+          hospital, supporting higher-level care and referral services
+          for patients across the province.
+        </p>
+      </div>
+
+      <div class="facility-card">
+        <span class="facility-tag">Primary Care</span>
+        <h4>Health Centres</h4>
+        <p>
+          Health centres provide frontline healthcare services,
+          basic treatment, maternal and child health,
+          disease prevention, and referral support.
+        </p>
+      </div>
+
+      <div class="facility-card">
+        <span class="facility-tag">Community Access</span>
+        <h4>Clinics and Aid Posts</h4>
+        <p>
+          Clinics and aid posts support community-level care,
+          especially for rural communities that need first-contact
+          healthcare services close to home.
+        </p>
+      </div>
+
+      <div class="facility-card">
+        <span class="facility-tag">Outreach</span>
+        <h4>Mobile and Outreach Points</h4>
+        <p>
+          Outreach services help reach hard-to-access communities
+          through patrols, mobile clinics, immunization visits,
+          and public health programs.
+        </p>
+      </div>
+
+      <div class="facility-card">
+        <span class="facility-tag">Public Health</span>
+        <h4>Program Delivery Sites</h4>
+        <p>
+          Public health programs may be delivered through schools,
+          churches, community centres, aid posts, and temporary campaign sites.
+        </p>
+      </div>
+
+      <div class="facility-card">
+        <span class="facility-tag">Future Directory</span>
+        <h4>Facility Listing Expansion</h4>
+        <p>
+          This page can later include official facility names,
+          districts, contact numbers, services available,
+          opening hours, and referral instructions.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>How the Facility System Works</h4>
+
+      <p>
+        JPHA’s facility network supports care at different levels.
+        Community members may begin at local clinics, aid posts,
+        or health centres before being referred to larger facilities
+        when more advanced care is required.
+      </p>
+
+      <ul class="list">
+        <li><strong>First contact care:</strong> Aid posts, local clinics, and community health services.</li>
+        <li><strong>Intermediate care:</strong> Health centres providing broader frontline services.</li>
+        <li><strong>Referral care:</strong> Kudjip Nazarene Hospital and higher-level support.</li>
+        <li><strong>Outreach support:</strong> Services delivered beyond permanent facility locations.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>Important Directory Note</h4>
+
+      <p>
+        Before publishing a full official facility directory,
+        each facility name, location, service level, operational status,
+        and contact number should be verified directly with JPHA.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div class="directory-box">
+      <h4>Suggested Future Facility Directory Fields</h4>
+
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    </div>
+
+    <div>
+      <h4>Why This Page Matters</h4>
+
+      <p>
+        A Facilities page is one of the most useful parts of a health authority
+        website because it helps people understand where care is available.
+      </p>
+
+      <p>
+        It also supports better navigation between the Services, Contact,
+        and future district health pages.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>Related Pages</h4>
+
+      <ul class="list">
+        <li><strong>Services page:</strong> Learn what types of healthcare support are available.</li>
+        <li><strong>Contact page:</strong> Reach JPHA for facility and service enquiries.</li>
+        <li><strong>About page:</strong> Understand JPHA’s role in provincial healthcare delivery.</li>
+      </ul>
+    </div>
+
+    <div class="cta-box">
+      <h4>Need Help Finding a Facility?</h4>
+
+      <p>
+        Visitors looking for a hospital, clinic, aid post,
+        or local health service point should contact JPHA
+        for guidance and confirmed information.
+      </p>
+
+      <ul class="list">
+        <li>Ask about facility locations</li>
+        <li>Request service and referral guidance</li>
+        <li>Get connected to the right facility or contact point</li>
+      </ul>
+
+      <a href="#" class="btn">Go to Contact Page</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official facility details should be verified before public release.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

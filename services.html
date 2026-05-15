@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Services</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 { font-size: 1.2rem; }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: #c9fff0; }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .service-card,
+    .note-box,
+    .cta-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section { padding: 4.5rem 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .service-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 { grid-template-columns: 1.1fr 0.9fr; }
+
+    .grid-3 { grid-template-columns: repeat(3,1fr); }
+
+    .service-grid {
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 2rem;
+    }
+
+    .soft-section { background: #f3fafb; }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .service-tag {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p { color: white; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+
+    <nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Health services across Jiwaka Province</span>
+
+      <h2>Care and support for communities, families, and health facilities.</h2>
+
+      <p>
+        Jiwaka Provincial Health Authority supports healthcare services across
+        Jiwaka Province, including rural health, hospital care,
+        public health programs, outreach services, and referral support.
+      </p>
+
+      <p>
+        This page helps visitors understand the main healthcare service areas
+        delivered and coordinated by JPHA.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h3>Service Areas</h3>
+
+      <ul>
+        <li><strong>Primary healthcare:</strong> Community-level and frontline care</li>
+        <li><strong>Hospital services:</strong> Referral, inpatient, and emergency care</li>
+        <li><strong>Public health:</strong> Prevention, awareness, and disease response</li>
+        <li><strong>Outreach:</strong> Rural and remote healthcare support</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Our Service Approach</h4>
+
+      <p>
+        JPHA works to improve healthcare access for people across Jiwaka Province.
+        Its service approach connects hospitals, rural health centres,
+        aid posts, public health programs, and community outreach.
+      </p>
+
+      <p>
+        The authority focuses on delivering practical, people-centered
+        healthcare services that support families, patients, health workers,
+        and communities.
+      </p>
+    </div>
+
+    <div>
+      <ul class="list">
+        <li><strong>Patient-focused:</strong> Helping people access the care they need.</li>
+        <li><strong>Province-wide:</strong> Supporting all districts in Jiwaka Province.</li>
+        <li><strong>Connected care:</strong> Linking rural health, hospital care, and public health.</li>
+        <li><strong>Access-oriented:</strong> Supporting outreach and referral pathways.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Main Service Areas</h3>
+      <p>Key healthcare services delivered and coordinated by JPHA.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <span class="service-tag">Primary Care</span>
+        <h4>Primary Healthcare</h4>
+        <p>
+          Supporting health centres, clinics, aid posts,
+          basic treatment, preventive care, and community-based care
+          close to where people live.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Hospital Services</span>
+        <h4>Hospital and Referral Care</h4>
+        <p>
+          Supporting emergency services, inpatient care,
+          referral pathways, diagnostics, and specialist healthcare
+          through major referral facilities such as Kudjip Nazarene Hospital.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Public Health</span>
+        <h4>Public Health Programs</h4>
+        <p>
+          Managing health promotion, disease prevention,
+          immunization, health awareness, outbreak response,
+          and community health programs.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Outreach</span>
+        <h4>Rural and Remote Outreach</h4>
+        <p>
+          Extending healthcare services to hard-to-reach communities
+          through outreach patrols, mobile clinics,
+          and rural health support programs.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Family Health</span>
+        <h4>Maternal, Child, and Family Health</h4>
+        <p>
+          Supporting pregnancy care, childbirth services,
+          newborn care, child health, family wellbeing,
+          and women’s health programs.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Medical Support</span>
+        <h4>Medical Supply and Diagnostic Support</h4>
+        <p>
+          Supporting medicine distribution, medical supply coordination,
+          laboratory services, and diagnostic support for health facilities.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Additional Support Areas</h3>
+      <p>Other services that help strengthen healthcare delivery in Jiwaka Province.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h4>Health Promotion and Awareness</h4>
+        <p>
+          Community health education, prevention messaging,
+          and awareness activities that encourage early care-seeking.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Emergency and Referral Support</h4>
+        <p>
+          Helping patients access higher-level care
+          through referral pathways and emergency response coordination.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Partner-Supported Programs</h4>
+        <p>
+          Working with government, churches, NGOs,
+          and development partners to strengthen health services.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>How People May Access Services</h4>
+
+      <p>
+        People may begin by visiting their nearest aid post,
+        health centre, clinic, or main referral facility.
+        Urgent cases should seek emergency help immediately.
+      </p>
+
+      <ul class="list">
+        <li><strong>Community-level care:</strong> Start with a local clinic, aid post, or health centre.</li>
+        <li><strong>Referral care:</strong> Complex cases may be referred to larger facilities.</li>
+        <li><strong>Public health support:</strong> Outreach and immunization may be delivered in communities.</li>
+        <li><strong>Information access:</strong> Contact JPHA for service guidance and facility information.</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>Important Website Note</h4>
+
+      <p>
+        Before publishing an official Services page, confirm individual
+        service details, facility hours, emergency contact numbers,
+        referral instructions, and clinic information directly with JPHA.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Why This Services Page Works</h4>
+
+      <p>
+        This Services page gives visitors a clear overview of JPHA’s main
+        healthcare services without making the information too complicated.
+      </p>
+
+      <p>
+        In future, each service area can become its own full webpage,
+        such as Maternal Health, Public Health, Facilities,
+        Emergency Referral, or Outreach Programs.
+      </p>
+    </div>
+
+    <div class="cta-box">
+      <h4>Need Help Finding a Service?</h4>
+
+      <p>
+        Visitors can contact JPHA or visit the Facilities page
+        to find the right healthcare support.
+      </p>
+
+      <ul class="list">
+        <li>Contact JPHA for service guidance</li>
+        <li>View hospitals, health centres, and aid posts</li>
+        <li>Learn more about JPHA’s role and priorities</li>
+      </ul>
+
+      <a href="#" class="btn">Go to Contact Page</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official service details should be verified before public release.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+      
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

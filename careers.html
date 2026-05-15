@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiwaka Provincial Health Authority | Careers</title>
+
+  <style>
+    :root {
+      --primary: #0f5c6e;
+      --primary-dark: #0a4452;
+      --secondary: #e8f4f6;
+      --accent: #1c8a6a;
+      --text: #1f2933;
+      --muted: #52606d;
+      --light: #f7fbfc;
+      --white: #ffffff;
+      --border: #d9e2ec;
+      --shadow: 0 10px 30px rgba(15, 92, 110, 0.12);
+      --radius: 18px;
+      --max-width: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--primary-dark);
+      color: #d7eef2;
+      font-size: 0.95rem;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      flex-wrap: wrap;
+    }
+
+    header {
+      background: linear-gradient(135deg, rgba(15,92,110,0.95), rgba(12,76,91,0.9));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand-badge {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-weight: bold;
+    }
+
+    .brand h1 { font-size: 1.2rem; }
+
+    .brand span {
+      font-size: 0.9rem;
+      color: #d7eef2;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+    }
+
+    nav a:hover { color: #c9fff0; }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #e5f2f5;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card,
+    .card,
+    .job-card,
+    .note-box,
+    .cta-box,
+    .profile-box,
+    .stat-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    section { padding: 4.5rem 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: auto;
+    }
+
+    .grid-2,
+    .grid-3,
+    .jobs-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-2 { grid-template-columns: 1.05fr 0.95fr; }
+
+    .grid-3 { grid-template-columns: repeat(3,1fr); }
+
+    .jobs-grid {
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 2rem;
+    }
+
+    .soft-section { background: #f3fafb; }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .list li {
+      background: white;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .job-tag {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--secondary);
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .note-box {
+      background: var(--secondary);
+      border-left: 6px solid var(--accent);
+    }
+
+    .profile-box {
+      background: linear-gradient(135deg, #f8fcfd, #edf8fa);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f5c6e, #0b4654);
+      color: white;
+    }
+
+    .cta-box h4,
+    .cta-box p { color: white; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-top: 1rem;
+      background: var(--accent);
+      color: white;
+    }
+
+    footer {
+      background: #0b2730;
+      color: #d8e8ed;
+      padding: 2.5rem 0;
+    }
+
+    .footer-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    footer ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      color: #9fb5bb;
+      font-size: 0.9rem;
+    }
+
+    @media(max-width: 980px) {
+      .hero-grid,
+      .grid-2,
+      .footer-grid,
+      .grid-3,
+      .jobs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <div>Email: info@jiwakapha.gov.pg</div>
+    <div>Phone: +675 7930 1096</div>
+  </div>
+</div>
+
+<header>
+  <div class="container navbar">
+
+    <a href="index.html" class="brand">
+      <div class="brand-badge">JPHA</div>
+      <div>
+        <h1>Jiwaka Provincial Health Authority</h1>
+        <span>Serving communities across Jiwaka Province</span>
+      </div>
+    </a>
+
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="leadership.html">Leadership</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <span class="eyebrow">Work with Jiwaka Provincial Health Authority</span>
+
+      <h2>Build a career that supports health across Jiwaka Province.</h2>
+
+      <p>
+        The JPHA Careers page helps future employees learn about opportunities
+        to serve communities through hospitals, rural health centres,
+        public health programs, outreach services, and administration.
+      </p>
+
+      <p>
+        This page can later be updated with official vacancies,
+        application notices, job descriptions, and recruitment guidance.
+      </p>
+    </div>
+
+    <aside class="hero-card">
+      <h3>Careers Overview</h3>
+
+      <ul>
+        <li><strong>Workforce need:</strong> Health staff, administrators, and support teams</li>
+        <li><strong>Provincial impact:</strong> Serving families and communities across Jiwaka</li>
+        <li><strong>Service mission:</strong> Supporting better healthcare access</li>
+        <li><strong>Future growth:</strong> Page can host official vacancy notices</li>
+      </ul>
+    </aside>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Purpose of the Careers Page</h4>
+
+      <p>
+        A Careers page should do more than list job vacancies.
+        It should explain why working with JPHA matters,
+        what kinds of roles support the health system,
+        and how applicants can take the next step.
+      </p>
+
+      <p>
+        JPHA needs committed health workers, administrators,
+        technical officers, and support staff to strengthen healthcare
+        delivery across the province.
+      </p>
+    </div>
+
+    <div>
+      <ul class="list">
+        <li><strong>For health professionals:</strong> Opportunities to serve patients and communities.</li>
+        <li><strong>For support staff:</strong> Administrative, technical, and operational roles.</li>
+        <li><strong>For new applicants:</strong> Guidance on how to apply when vacancies are available.</li>
+        <li><strong>For workforce development:</strong> Supporting recruitment and institutional growth.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Why Work with JPHA</h3>
+      <p>Reasons to build a career with Jiwaka Provincial Health Authority.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h4>Serve Communities</h4>
+        <p>
+          Work that supports hospitals, clinics, outreach programs,
+          and public health services can directly improve lives
+          across Jiwaka Province.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Support a Growing Health System</h4>
+        <p>
+          JPHA continues to strengthen healthcare services,
+          infrastructure, staffing, and service coordination
+          across all districts.
+        </p>
+      </div>
+
+      <div class="card">
+        <h4>Contribute Across Service Areas</h4>
+        <p>
+          Careers may support hospital care, public health,
+          administration, diagnostics, pharmacy, outreach,
+          and rural healthcare services.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Workforce Snapshot</h3>
+      <p>Key workforce focus areas for JPHA.</p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="stat-card">
+        <h4>Districts Served</h4>
+        <strong>3</strong>
+        <p>North Waghi, Jimi, and Anglimp South Waghi.</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Health Network</h4>
+        <strong>100+</strong>
+        <p>Health facilities and aid posts supported across the province.</p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Service Mission</h4>
+        <strong>24/7</strong>
+        <p>Supporting emergency and referral healthcare needs.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container">
+
+    <div class="section-title">
+      <h3>Sample Opportunity Categories</h3>
+      <p>Common job areas that may be advertised by JPHA.</p>
+    </div>
+
+    <div class="jobs-grid">
+
+      <div class="job-card">
+        <span class="job-tag">Clinical Roles</span>
+        <h4>Nursing and Clinical Care</h4>
+        <p>
+          Roles supporting patient care in hospitals,
+          health centres, maternity services,
+          clinics, and community health settings.
+        </p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-tag">Public Health</span>
+        <h4>Outreach and Community Health</h4>
+        <p>
+          Positions supporting rural service delivery,
+          health promotion, immunization,
+          disease prevention, and awareness programs.
+        </p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-tag">Operations</span>
+        <h4>Administration and Management</h4>
+        <p>
+          Roles in planning, records, office support,
+          finance, procurement, logistics,
+          and institutional administration.
+        </p>
+      </div>
+
+      <div class="job-card">
+        <span class="job-tag">Technical Support</span>
+        <h4>Laboratory, Pharmacy, and Diagnostics</h4>
+        <p>
+          Technical positions that support diagnostics,
+          pharmacy, laboratory services,
+          medical supplies, and health systems.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div class="profile-box">
+      <h4>How to Apply</h4>
+
+      <p>
+        On a live official website, this section should provide
+        confirmed application instructions and link directly to current vacancies.
+      </p>
+
+      <ul class="list">
+        <li><strong>Step 1:</strong> Review the vacancy notice or available role.</li>
+        <li><strong>Step 2:</strong> Prepare your CV, qualifications, and references.</li>
+        <li><strong>Step 3:</strong> Submit your application through the official process.</li>
+        <li><strong>Step 4:</strong> Wait for contact from JPHA recruitment or administration.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>What Applicants May Want to Know</h4>
+
+      <p>
+        Applicants usually want to know what roles are available,
+        what qualifications are required, what documents to prepare,
+        and where to send applications.
+      </p>
+
+      <p>
+        This page can later include official job notices,
+        downloadable application forms, closing dates,
+        and recruitment contact details.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="soft-section">
+  <div class="container grid-2">
+
+    <div>
+      <h4>Future Vacancy Listing Details</h4>
+
+      <p>
+        When this page becomes a live recruitment page,
+        each vacancy can include standard details for applicants.
+      </p>
+
+      <ul class="list">
+        <li><strong>Job title</strong></li>
+        <li><strong>Department or service area</strong></li>
+        <li><strong>Duty station or location</strong></li>
+        <li><strong>Application closing date</strong></li>
+        <li><strong>Minimum qualifications</strong></li>
+        <li><strong>How to apply</strong></li>
+        <li><strong>Contact person or recruitment office</strong></li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <h4>Important Publishing Note</h4>
+
+      <p>
+        Before publishing an official Careers page,
+        all vacancy details, recruitment contacts,
+        application methods, closing dates,
+        and job descriptions should be confirmed directly with JPHA.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container grid-2">
+
+    <div>
+      <h4>Why This Page Matters</h4>
+
+      <p>
+        A Careers page supports workforce growth and helps present JPHA
+        as an institution that welcomes skilled people who want
+        to make a difference in public health.
+      </p>
+
+      <p>
+        It also gives the website a more complete public-service identity
+        by supporting both the public and future staff.
+      </p>
+    </div>
+
+    <div class="cta-box">
+      <h4>Explore More of the Website</h4>
+
+      <p>
+        People interested in careers often want to understand
+        the organization, its services, and its leadership before applying.
+      </p>
+
+      <ul class="list">
+        <li>Learn about JPHA on the About page</li>
+        <li>See service areas on the Services page</li>
+        <li>View leadership and governance information</li>
+      </ul>
+
+      <a href="about.html" class="btn">Go to About Page</a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <h4>Jiwaka Provincial Health Authority</h4>
+
+      <p>
+        Supporting healthcare delivery across Jiwaka Province through
+        hospital services, public health programs, rural outreach,
+        and healthcare coordination.
+      </p>
+
+      <p class="disclaimer">
+        Website content prepared using publicly available information.
+        Official vacancy and recruitment details should be verified before public release.
+      </p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+
+
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="facilities.html">Facilities</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="leadership.html">Leadership</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
